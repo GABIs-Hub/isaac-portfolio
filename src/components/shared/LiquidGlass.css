@@ -1,0 +1,34 @@
+.liquid-glass {
+  position: absolute;
+  opacity: 0.8;
+  backdrop-filter: blur(10px);
+  animation: liquidMorph 8s ease-in-out infinite, glassBlur 8s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.liquid-glass.shape-1 {
+  width: 180px;
+  height: 180px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  top: 20px;
+  right: 80px;
+}
+
+.liquid-glass.shape-2 {
+  width: 220px;
+  height: 220px;
+  border-radius: 45%;
+  bottom: 0;
+  right: 0;
+  animation-delay: 1s;
+}
+
+.liquid-glass.shape-3 {
+  width: 120px;
+  height: 120px;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  top: 150px;
+  right: 300px;
+  animation-delay: 2s;
+}

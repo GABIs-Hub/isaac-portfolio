@@ -1,0 +1,129 @@
+.contact-section {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: white;
+}
+
+.section-title-light {
+  color: white;
+}
+
+.section-title-light::after {
+  background: var(--color-accent);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  animation: slideUp 0.8s ease-out;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.contact-item h3 {
+  color: var(--color-accent);
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.contact-item a {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: var(--color-accent);
+  padding-left: 10px;
+}
+
+.contact-item p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+}
+
+.contact-cta {
+  animation: slideUp 0.8s ease-out 0.1s both;
+}
+
+.contact-cta h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.contact-cta p {
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-cta .btn-primary {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  padding: 1rem 2rem;
+  font-weight: 700;
+  display: inline-block;
+  box-shadow: 0 10px 25px rgba(240, 173, 78, 0.3);
+}
+
+.contact-cta .btn-primary:hover {
+  background: #ffb84d;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(240, 173, 78, 0.4);
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    flex-shrink: 0;
+  }
+
+  .contact-cta h3 {
+    font-size: 1.5rem;
+  }
+}

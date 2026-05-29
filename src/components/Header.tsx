@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
             <li key={item.id}>
               <button
                 onClick={() => handleNavClick(item.id)}
-                className="text-white/80 font-bold hover:text-accent transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full text-sm uppercase tracking-wider"
+                className="text-white/80 font-bold hover:text-accent transition-colors duration-300 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 hover:after:w-full text-sm uppercase tracking-wider"
               >
                 {item.label}
               </button>

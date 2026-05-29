@@ -80,7 +80,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ title, shortDesc, fullDesc, icon,
               </div>
 
               {/* Divider */}
-              <div className="h-[2px] bg-linear-to-r from-accent via-accent/50 to-transparent rounded-full mb-8"></div>
+              <div className="h-0.5 bg-linear-to-r from-accent via-accent/50 to-transparent rounded-full mb-8"></div>
 
               {/* Content with Typing Animation */}
               <div className="min-h-40 mb-8">

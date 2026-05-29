@@ -3,5 +3,19 @@
 @import "tailwindcss";
 
 :root {
+  --primary-blue: #2563EB;
+  --secondary-blue: #0F172A;
+  --surface-blue: #1E293B;
+  --accent-gold: #FBBF24;
+
+  --text-primary: #F8FAFC;
+  --text-muted: #94A3B8;
+
   font-family: 'Syne', sans-serif;
+}
+
+body {
+  background: var(--secondary-blue);
+  color: var(--text-primary);
+  overflow-x: hidden;
 }

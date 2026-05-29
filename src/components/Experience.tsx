@@ -23,7 +23,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ date, title, company, d
         {isActive && <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>}
       </div>
       {/* Line */}
-      <div className={`w-[2px] flex-1 min-h-[60px] ${isActive ? 'bg-accent/30' : 'bg-white/10'}`}></div>
+      <div className={`w-0.5 flex-1 min-h-15 ${isActive ? 'bg-accent/30' : 'bg-white/10'}`}></div>
     </div>
 
     {/* Content Card */}

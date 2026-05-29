@@ -29,12 +29,12 @@ const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }) => {
       </div>
 
       {/* Decorative Technical Crosshair lines */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.03] hidden lg:block"></div>
-      <div className="absolute top-1/2 left-0 right-0 h-px bg-white/[0.03] hidden lg:block"></div>
+      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/3 hidden lg:block"></div>
+      <div className="absolute top-1/2 left-0 right-0 h-px bg-white/3 hidden lg:block"></div>
 
       {/* Radiant Glowing Background Lights */}
-      <div className="absolute top-1/4 right-1/4 w-[30rem] h-[30rem] bg-accent/10 rounded-full blur-[100px] animate-pulse-glow"></div>
-      <div className="absolute bottom-1/4 left-1/4 w-[35rem] h-[35rem] bg-secondary/20 rounded-full blur-[120px]"></div>
+      <div className="absolute top-1/4 right-1/4 w-120 h-120 bg-accent/10 rounded-full blur-[100px] animate-pulse-glow"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-140 h-140 bg-secondary/20 rounded-full blur-[120px]"></div>
 
       {/* Animated Liquid Background Blobs */}
       <div className="absolute top-20 right-10 w-64 h-64 bg-accent/10 rounded-full liquid-blob-1 blur-3xl"></div>
@@ -82,7 +82,7 @@ const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }) => {
 
           {/* Right Photo Section (5 Columns on Desktop, Offset 1) */}
           <div className="flex justify-center items-center lg:col-span-5 lg:col-start-8 relative">
-            <div className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] md:w-[380px] md:h-[380px] flex items-center justify-center">
+            <div className="relative w-70 h-70 sm:w-85 sm:h-85 md:w-95 md:h-95 flex items-center justify-center">
               
               {/* Engineering Blueprint Ring 1: Dashed slow rotating border */}
               <div className="absolute inset-0 rounded-full border-2 border-dashed border-accent/25 animate-spin-slow pointer-events-none"></div>
@@ -99,7 +99,7 @@ const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }) => {
               <div className="absolute inset-8 rounded-full border border-accent/30 pointer-events-none shadow-[0_0_25px_rgba(240,173,78,0.15)]"></div>
 
               {/* Main Photo Container */}
-              <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[280px] md:h-[280px] rounded-full overflow-hidden border-4 border-accent shadow-2xl z-10 transition-transform duration-500 hover:scale-105">
+              <div className="relative w-50 h-50 sm:w-62.5 sm:h-62.5 md:w-70 md:h-70 rounded-full overflow-hidden border-4 border-accent shadow-2xl z-10 transition-transform duration-500 hover:scale-105">
                 <img
                   src="/images/isaac.jpg"
                   alt="Isaac Ogabi - Building Engineer"

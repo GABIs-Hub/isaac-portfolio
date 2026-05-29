@@ -6,7 +6,7 @@ interface TypingAnimationProps {
   onComplete?: () => void
 }
 
-const TypingAnimation: React.FC<TypingAnimationProps> = ({ text, speed = 30, onComplete }) => {
+const TypingAnimation: React.FC<TypingAnimationProps> = ({ text, speed = 40, onComplete }) => {
   const [displayedText, setDisplayedText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
 

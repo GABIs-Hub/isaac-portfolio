@@ -1,4 +1,5 @@
 import React from 'react'
+import { CircleFill } from 'react-bootstrap-icons'
 
 interface ExperienceItemProps {
   date: string
@@ -6,26 +7,45 @@ interface ExperienceItemProps {
   company: string
   description: string
   isActive?: boolean
+  index: number
 }
 
-const ExperienceItem: React.FC<ExperienceItemProps> = ({ date, title, company, description, isActive }) => (
-  <div className={`relative pl-8 pb-12 ${isActive ? 'bg-gradient-to-r from-accent/10 to-transparent p-6 rounded-lg' : ''}`}>
-    {/* Timeline dot */}
-    <div
-      className={`absolute left-0 top-0 w-4 h-4 rounded-full transform -translate-x-1.5 ${
-        isActive ? 'bg-accent' : 'bg-gray-300'
-      }`}
-    ></div>
+const ExperienceItem: React.FC<ExperienceItemProps> = ({ date, title, company, description, isActive, index }) => (
+  <div className="relative flex gap-6 group" style={{ animationDelay: `${index * 100}ms` }}>
+    {/* Timeline Track */}
+    <div className="flex flex-col items-center shrink-0">
+      {/* Dot */}
+      <div className={`relative z-10 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+        isActive
+          ? 'border-accent bg-accent/20 shadow-[0_0_15px_rgba(240,173,78,0.4)]'
+          : 'border-white/20 bg-[#11263c] group-hover:border-accent/50'
+      }`}>
+        {isActive && <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>}
+      </div>
+      {/* Line */}
+      <div className={`w-[2px] flex-1 min-h-[60px] ${isActive ? 'bg-accent/30' : 'bg-white/10'}`}></div>
+    </div>
 
-    {/* Connecting line */}
-    <div
-      className={`absolute left-2 top-4 w-0.5 h-20 ${isActive ? 'bg-accent' : 'bg-gray-200'}`}
-    ></div>
-
-    <div className="font-bold text-accent text-sm tracking-wider uppercase">{date}</div>
-    <h3 className="text-2xl font-black text-primary mt-2 mb-1">{title}</h3>
-    <p className="text-gray-600 font-semibold mb-3">{company}</p>
-    <p className="text-gray-700 leading-relaxed">{description}</p>
+    {/* Content Card */}
+    <div className={`flex-1 pb-10 -mt-1`}>
+      <div className={`p-6 rounded-2xl border transition-all duration-300 ${
+        isActive
+          ? 'bg-accent/5 border-accent/20 shadow-[0_0_30px_rgba(240,173,78,0.08)]'
+          : 'bg-[#11263c]/40 border-white/5 hover:border-white/15'
+      }`}>
+        {/* Date badge */}
+        <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider mb-3 ${
+          isActive ? 'bg-accent/15 text-accent' : 'bg-white/5 text-gray-400'
+        }`}>
+          <CircleFill size={6} className={isActive ? 'text-accent' : 'text-gray-500'} />
+          {date}
+        </div>
+        
+        <h3 className="text-xl font-extrabold text-white mb-1 font-syne">{title}</h3>
+        <p className={`font-bold text-sm mb-3 ${isActive ? 'text-accent' : 'text-gray-400'}`}>{company}</p>
+        <p className="text-gray-400 leading-relaxed text-sm">{description}</p>
+      </div>
+    </div>
   </div>
 )
 
@@ -66,9 +86,13 @@ const Experience: React.FC = () => {
   ]
 
   return (
-    <section id="experience" className="py-16 md:py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-black text-center mb-4 text-primary">
+    <section id="experience" className="py-20 md:py-28 bg-[#0b1b2b] relative overflow-hidden">
+      {/* Background accents */}
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-secondary/8 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-[100px]"></div>
+
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-4 text-white font-syne">
           Professional Journey
         </h2>
         <div className="w-24 h-1 bg-accent mx-auto mb-16 rounded-full"></div>
@@ -77,6 +101,7 @@ const Experience: React.FC = () => {
           {experiences.map((exp, index) => (
             <ExperienceItem
               key={index}
+              index={index}
               date={exp.date}
               title={exp.title}
               company={exp.company}

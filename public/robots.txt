@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://isaac-ogabi.vercel.app/sitemap.xml

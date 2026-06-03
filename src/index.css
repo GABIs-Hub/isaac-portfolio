@@ -2,6 +2,16 @@
 
 @import "tailwindcss";
 
+@theme {
+  --color-primary-blue: #2563EB;
+  --color-secondary-blue: #0F172A;
+  --color-surface-blue: #1E293B;
+  --color-accent-gold: #FBBF24;
+
+  --color-text-primary: #F8FAFC;
+  --color-text-muted: #94A3B8;
+}
+
 :root {
   --primary-blue: #2563EB;
   --secondary-blue: #0F172A;
@@ -14,8 +24,51 @@
   font-family: 'Syne', sans-serif;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: var(--secondary-blue);
+  background: linear-gradient(135deg, var(--secondary-blue) 0%, #0C1117 100%);
   color: var(--text-primary);
   overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth scrolling for all browsers */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Utility Classes */
+.card-glass {
+  @apply bg-gradient-to-br from-blue-500/10 via-transparent to-yellow-400/5 backdrop-blur-xs border border-white/10 rounded-lg transition-all duration-300;
+}
+
+.card-glass:hover {
+  @apply border-accent-gold/30 shadow-lg;
+}
+
+.text-gradient-gold {
+  @apply bg-gradient-to-r from-accent-gold to-yellow-200 bg-clip-text text-transparent;
+}
+
+.text-gradient-blue {
+  @apply bg-gradient-to-r from-primary-blue to-blue-400 bg-clip-text text-transparent;
+}
+
+.section-container {
+  @apply relative z-10;
+}
+
+.ease-in-animation {
+  @apply transition-all duration-500 ease-in;
 }

@@ -1,14 +1,43 @@
 .contact-section {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
   color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: float 15s ease-in-out infinite;
+}
+
+.contact-section::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: float 20s ease-in-out infinite reverse;
 }
 
 .section-title-light {
-  color: white;
+  color: var(--accent-gold) !important;
+  text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
 }
 
 .section-title-light::after {
-  background: var(--color-accent);
+  background: linear-gradient(90deg, var(--accent-gold), #fcd34d);
 }
 
 .contact-content {
@@ -17,6 +46,8 @@
   gap: 4rem;
   max-width: 1000px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-info {
@@ -29,82 +60,134 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  animation: slideUp 0.8s ease-out;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+.contact-item:hover {
+  background: rgba(251, 191, 36, 0.08);
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow: 0 15px 40px rgba(251, 191, 36, 0.15),
+              inset 0 0 30px rgba(251, 191, 36, 0.05);
 }
 
 .contact-icon {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(37, 99, 235, 0.1));
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent);
+  color: var(--accent-gold);
   margin-bottom: 0.5rem;
-  transition: all 0.3s ease;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  transition: all 0.4s ease;
+  font-size: 1.5rem;
+  flex-shrink: 0;
 }
 
 .contact-item:hover .contact-icon {
-  background: var(--color-accent);
-  color: var(--color-primary);
-  transform: scale(1.1);
+  background: linear-gradient(135deg, var(--accent-gold), #fcd34d);
+  color: var(--secondary-blue);
+  border-color: var(--accent-gold);
 }
 
 .contact-item h3 {
-  color: var(--color-accent);
+  color: var(--accent-gold);
   margin: 0;
   font-size: 1.1rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.contact-item a {
-  color: white;
+.contact-value {
+  color: rgba(255, 255, 255, 0.85);
   font-size: 1.1rem;
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
-.contact-item a:hover {
-  color: var(--color-accent);
-  padding-left: 10px;
+.contact-item:hover .contact-value {
+  color: var(--accent-gold);
 }
 
 .contact-item p {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 1.1rem;
 }
 
 .contact-cta {
-  animation: slideUp 0.8s ease-out 0.1s both;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.08) 0%, rgba(37, 99, 235, 0.05) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .contact-cta h3 {
   font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: white;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .contact-cta p {
   font-size: 1.05rem;
-  margin-bottom: 2rem;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
 }
 
 .contact-cta .btn-primary {
-  background: var(--color-accent);
-  color: var(--color-primary);
-  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #fcd34d 100%);
+  color: var(--secondary-blue);
+  padding: 1rem 2.5rem;
   font-weight: 700;
   display: inline-block;
-  box-shadow: 0 10px 25px rgba(240, 173, 78, 0.3);
+  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-cta .btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: left 0.3s ease;
 }
 
 .contact-cta .btn-primary:hover {
-  background: #ffb84d;
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(240, 173, 78, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(251, 191, 36, 0.4);
+}
+
+.contact-cta .btn-primary:hover::before {
+  left: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .contact-content {
+    gap: 3rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -116,14 +199,70 @@
   .contact-item {
     flex-direction: row;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    padding: 1.25rem;
   }
 
   .contact-icon {
-    flex-shrink: 0;
+    order: -1;
+  }
+
+  .contact-cta {
+    padding: 1.5rem;
+    gap: 1.25rem;
   }
 
   .contact-cta h3 {
     font-size: 1.5rem;
+  }
+
+  .contact-cta p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 60px 0;
+  }
+
+  .contact-content {
+    padding: 0 1rem;
+  }
+
+  .contact-item {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .contact-item h3 {
+    font-size: 1rem;
+  }
+
+  .contact-value,
+  .contact-item p {
+    font-size: 0.95rem;
+  }
+
+  .contact-cta {
+    padding: 1.25rem;
+  }
+
+  .contact-cta h3 {
+    font-size: 1.3rem;
+  }
+
+  .contact-cta p {
+    font-size: 0.9rem;
+  }
+
+  .contact-cta .btn-primary {
+    padding: 0.85rem 2rem;
+    font-size: 0.95rem;
   }
 }

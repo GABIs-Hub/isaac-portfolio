@@ -1,8 +1,15 @@
 :root {
-  /* Primary Colors */
-  --color-primary: #1a3a52;
-  --color-primary-light: #2c5f8d;
-  --color-accent: #f0ad4e;
+  /* Premium Color Palette */
+  --primary-blue: #2563EB;
+  --secondary-blue: #0F172A;
+  --surface-blue: #1E293B;
+  --accent-gold: #FBBF24;
+  --dark-bg: #0C1117;
+  
+  /* Deprecated - using new scheme */
+  --color-primary: #2563EB;
+  --color-primary-light: #3B82F6;
+  --color-accent: #FBBF24;
 
   /* Neutrals */
   --color-white: #ffffff;
@@ -14,9 +21,20 @@
   --color-border: #e0e0e0;
   --color-dark: #1a1a1a;
 
-  /* Shadows */
-  --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.08);
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 25px 60px rgba(0, 0, 0, 0.2);
+  /* Text Colors */
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+
+  /* Shadows - Enhanced with blue tones */
+  --shadow-sm: 0 5px 15px rgba(37, 99, 235, 0.08);
+  --shadow: 0 10px 30px rgba(37, 99, 235, 0.12);
+  --shadow-lg: 0 20px 50px rgba(37, 99, 235, 0.15);
+  --shadow-xl: 0 25px 60px rgba(37, 99, 235, 0.2);
+  --shadow-gold: 0 10px 40px rgba(251, 191, 36, 0.15);
+  
+  /* Gradients */
+  --gradient-blue: linear-gradient(135deg, #2563EB 0%, #0F172A 100%);
+  --gradient-gold-blue: linear-gradient(135deg, #FBBF24 0%, #2563EB 100%);
+  --gradient-dark: linear-gradient(135deg, #0C1117 0%, #0F172A 100%);
 }

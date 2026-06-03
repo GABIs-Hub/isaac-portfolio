@@ -1,4 +1,11 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+import {
+  fadeInUp,
+  staggerContainer,
+  staggerItem,
+  hoverLift,
+} from '../../utils/animations'
 import './Projects.css'
 
 interface ProjectData {
@@ -9,25 +16,72 @@ interface ProjectData {
   tags: string[]
 }
 
-const ProjectCard: React.FC<ProjectData> = ({
+const ProjectCard: React.FC<ProjectData & { index: number }> = ({
   header,
   title,
   role,
   description,
-  tags
+  tags,
+  index,
 }) => {
   return (
-    <div className="project-card">
-      <div className="project-header">{header}</div>
-      <h3>{title}</h3>
-      <p className="project-role">{role}</p>
-      <p className="project-description">{description}</p>
-      <div className="project-tags">
-        {tags.map((tag, index) => (
-          <span key={index}>{tag}</span>
+    <motion.div
+      className="project-card"
+      variants={staggerItem}
+      whileHover={{ y: -12 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+    >
+      <motion.div
+        className="project-header"
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2 + index * 0.05 }}
+      >
+        {header}
+      </motion.div>
+
+      <motion.h3
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 + index * 0.05 }}
+      >
+        {title}
+      </motion.h3>
+
+      <motion.p
+        className="project-role"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.35 + index * 0.05 }}
+      >
+        {role}
+      </motion.p>
+
+      <motion.p
+        className="project-description"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.4 + index * 0.05 }}
+      >
+        {description}
+      </motion.p>
+
+      <motion.div
+        className="project-tags"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.45 + index * 0.05 }}
+      >
+        {tags.map((tag, tagIndex) => (
+          <motion.span
+            key={tagIndex}
+            whileHover={{ scale: 1.08, y: -2 }}
+          >
+            {tag}
+          </motion.span>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -59,16 +113,35 @@ const projectsData: ProjectData[] = [
 ]
 
 export const Projects: React.FC = () => {
+  const containerVariants = staggerContainer
+
   return (
     <section id="projects" className="section projects-section">
       <div className="container">
-        <h2 className="section-title">Featured Projects</h2>
-        <div className="projects-grid">
+        <motion.h2
+          className="section-title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          Featured Projects
+        </motion.h2>
+
+        <motion.div
+          className="projects-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {projectsData.map((project, index) => (
-            <ProjectCard key={index} {...project} />
+            <ProjectCard key={index} {...project} index={index} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
 }
+
+export default Projects

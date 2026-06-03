@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   Diagram3,
   CheckCircle,
@@ -8,6 +9,12 @@ import {
   Boxes
 } from 'react-bootstrap-icons'
 import { useTypingAnimation } from '../shared/useTypingAnimation'
+import {
+  fadeInUp,
+  staggerContainer,
+  staggerItem,
+  hoverLift,
+} from '../../utils/animations'
 import './Skills.css'
 
 interface SkillCardProps {
@@ -15,48 +22,126 @@ interface SkillCardProps {
   title: string
   shortDesc: string
   fullDesc: string
+  index: number
 }
 
 export const SkillCard: React.FC<SkillCardProps> = ({
   icon,
   title,
   shortDesc,
-  fullDesc
+  fullDesc,
+  index,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const { displayedText } = useTypingAnimation(isExpanded ? fullDesc : '', 40)
 
   return (
     <>
-      <div
+      <motion.div
         className="skill-card"
         onClick={() => setIsExpanded(true)}
+        variants={staggerItem}
+        whileHover={{ y: -10 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       >
-        <div className="skill-icon">{icon}</div>
-        <h3>{title}</h3>
-        <p>{shortDesc}</p>
-        <div className="skill-card-hover">Click to expand</div>
-      </div>
+        <motion.div
+          className="skill-icon"
+          animate={{ rotate: [0, 10, -10, 0] }}
+          transition={{ duration: 4, repeat: Infinity, delay: index * 0.5 }}
+          whileHover={{ scale: 1.2, rotate: 360, transition: { duration: 0.6 } }}
+        >
+          {icon}
+        </motion.div>
 
-      {isExpanded && (
-        <div className="skill-modal-overlay" onClick={() => setIsExpanded(false)}>
-          <div className="skill-modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="modal-close"
-              onClick={() => setIsExpanded(false)}
+        <motion.h3
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          {title}
+        </motion.h3>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          {shortDesc}
+        </motion.p>
+
+        <motion.div
+          className="skill-card-hover"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+        >
+          Click to expand
+        </motion.div>
+      </motion.div>
+
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            className="skill-modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsExpanded(false)}
+          >
+            <motion.div
+              className="skill-modal"
+              initial={{ scale: 0.8, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 20 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              ✕
-            </button>
-            <div className="modal-icon">{icon}</div>
-            <h2>{title}</h2>
-            <p className="modal-short-desc">{shortDesc}</p>
-            <div className="modal-full-desc">
-              {displayedText}
-              <span className={displayedText === fullDesc ? 'hidden' : ''}>│</span>
-            </div>
-          </div>
-        </div>
-      )}
+              <motion.button
+                className="modal-close"
+                onClick={() => setIsExpanded(false)}
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                ✕
+              </motion.button>
+
+              <motion.div
+                className="modal-icon"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+              >
+                {icon}
+              </motion.div>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+              >
+                {title}
+              </motion.h2>
+
+              <motion.p
+                className="modal-short-desc"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                {shortDesc}
+              </motion.p>
+
+              <motion.div
+                className="modal-full-desc"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                {displayedText}
+                <span className={displayedText === fullDesc ? 'hidden' : ''}>│</span>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
@@ -101,16 +186,35 @@ const skillsData = [
 ]
 
 export const Skills: React.FC = () => {
+  const containerVariants = staggerContainer
+
   return (
     <section id="skills" className="section skills-section">
       <div className="container">
-        <h2 className="section-title">Core Competencies</h2>
-        <div className="skills-grid">
+        <motion.h2
+          className="section-title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          Core Competencies
+        </motion.h2>
+
+        <motion.div
+          className="skills-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {skillsData.map((skill, index) => (
-            <SkillCard key={index} {...skill} />
+            <SkillCard key={index} {...skill} index={index} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
 }
+
+export default Skills

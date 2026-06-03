@@ -1,4 +1,12 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+import {
+  fadeInUp,
+  fadeInLeft,
+  staggerContainer,
+  staggerItem,
+  hoverScale,
+} from '../../utils/animations'
 import './Experience.css'
 
 interface ExperienceData {
@@ -38,24 +46,82 @@ const experienceData: ExperienceData[] = [
 ]
 
 export const Experience: React.FC = () => {
+  const containerVariants = staggerContainer
+
   return (
     <section id="experience" className="section experience-section">
       <div className="container">
-        <h2 className="section-title">Professional Journey</h2>
-        <div className="experience-timeline">
+        <motion.h2
+          className="section-title"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          Professional Journey
+        </motion.h2>
+
+        <motion.div
+          className="experience-timeline"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {experienceData.map((exp, index) => (
-            <div
+            <motion.div
               key={index}
               className={`experience-item ${exp.isActive ? 'active' : ''}`}
+              variants={staggerItem}
+              whileHover={{ x: 8 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
-              <div className="experience-date">{exp.date}</div>
-              <h3>{exp.title}</h3>
-              <p className="experience-company">{exp.company}</p>
-              <p>{exp.description}</p>
-            </div>
+              <motion.div
+                className="experience-dot"
+                animate={exp.isActive ? { scale: [1, 1.2, 1] } : {}}
+                transition={exp.isActive ? { duration: 2, repeat: Infinity } : {}}
+                {...hoverScale}
+              />
+
+              <motion.div
+                className="experience-date"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                {exp.date}
+              </motion.div>
+
+              <motion.h3
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 }}
+              >
+                {exp.title}
+              </motion.h3>
+
+              <motion.p
+                className="experience-company"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                {exp.company}
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.35 }}
+              >
+                {exp.description}
+              </motion.p>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
 }
+
+export default Experience

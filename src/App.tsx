@@ -17,7 +17,7 @@ function App() {
   }
 
   return (
-    <div className="w-full bg-gradient-to-b from-secondary-blue to-dark-blue">
+    <div className="w-full bg-linear-to-b from-secondary-blue to-dark-blue">
       {/* Premium animated background */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         {/* Primary Blue Gradient Orb */}

@@ -19,8 +19,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
+    { id: 'certifications', label: 'Certs' },
     { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'contact', label: 'Contact' },
   ]
 
   const handleNavigate = (sectionId: string) => {

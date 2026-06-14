@@ -1,0 +1,60 @@
+.certifications-section {
+  background: linear-gradient(135deg, var(--surface-blue) 0%, var(--secondary-blue) 100%);
+  position: relative;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cert-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.cert-card:hover {
+  border-color: rgba(251, 191, 36, 0.4);
+  background: rgba(251, 191, 36, 0.05);
+}
+
+.cert-number {
+  font-family: 'Geist', monospace;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cert-info h3 {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 0.25rem;
+}
+
+.cert-info p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 480px) {
+  .cert-card { padding: 1.1rem; gap: 1rem; }
+  .cert-number { width: 40px; height: 40px; font-size: 1rem; }
+}

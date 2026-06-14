@@ -256,3 +256,176 @@
     max-width: 250px;
   }
 }
+
+.hero-credentials {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(251, 191, 36, 0.15);
+}
+
+.credential-badge {
+  display: flex;
+  flex-direction: column;
+}
+
+.credential-number {
+  font-family: 'Geist', system-ui;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  line-height: 1.1;
+}
+
+.credential-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+}
+
+.credential-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(251, 191, 36, 0.2);
+}
+
+@media (max-width: 480px) {
+  .hero-credentials { gap: 1rem; flex-wrap: wrap; }
+  .credential-number { font-size: 1.3rem; }
+  .credential-label { font-size: 0.65rem; }
+}
+
+.blueprint-card {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(15, 23, 42, 0.6));
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.blueprint-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--accent-gold);
+  opacity: 0.6;
+}
+
+.blueprint-corner-tl {
+  top: 12px;
+  left: 12px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.blueprint-corner-br {
+  bottom: 12px;
+  right: 12px;
+  border-left: none;
+  border-top: none;
+}
+
+.blueprint-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.blueprint-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Geist', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  color: #4ade80;
+  margin-bottom: auto;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+}
+
+.blueprint-id {
+  font-family: 'Geist', monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 1px;
+}
+
+.blueprint-label {
+  font-family: 'Geist', system-ui;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+}
+
+.blueprint-sublabel {
+  font-size: 0.85rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.blueprint-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(251, 191, 36, 0.2);
+  margin: 0.5rem 0;
+}
+
+.blueprint-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Geist', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.5px;
+}
+
+.meta-row span:last-child {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+
+.meta-active {
+  color: var(--accent-gold) !important;
+}
+
+@media (max-width: 768px) {
+  .blueprint-card { max-width: 320px; aspect-ratio: 4 / 4.5; padding: 1.5rem; }
+  .blueprint-label { font-size: 1.4rem; }
+}

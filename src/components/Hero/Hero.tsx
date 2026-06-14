@@ -88,115 +88,76 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
 
         {/* Profile visualization with animated elements */}
         <motion.div
-          className="hero-visual"
-          variants={fadeInRight}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Animated background circles */}
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            className="hero-visual"
+            variants={fadeInRight}
+            initial="hidden"
+            animate="visible"
           >
-            <div className="absolute w-80 h-80 rounded-full border-2 border-accent-gold/20" />
-          </motion.div>
-
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-          >
-            <div className="absolute w-96 h-96 rounded-full border-2 border-primary-blue/20" />
-          </motion.div>
-
-          {/* Center profile element with blob morph */}
-          <motion.div
-            className="relative w-64 h-64 bg-gradient-to-br from-primary-blue via-surface-blue to-secondary-blue flex items-center justify-center shadow-2xl overflow-hidden group"
-            style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%' }}
-            animate={{
-              scale: [1, 1.05, 1],
-              ...blobMorph.animate,
-            }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            whileHover={{ scale: 1.08 }}
-          >
-            {/* Glowing border effect with color shift */}
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-accent-gold via-primary-blue to-accent-gold opacity-0 group-hover:opacity-100 blur-lg animate-spin-slow transition-opacity duration-300"
-              style={{ borderRadius: 'inherit' }}
-              animate={{
-                backgroundImage: [
-                  'linear-gradient(0deg, #FBBF24, #2563EB)',
-                  'linear-gradient(90deg, #2563EB, #FBBF24)',
-                  'linear-gradient(180deg, #FBBF24, #2563EB)',
-                  'linear-gradient(270deg, #2563EB, #FBBF24)',
-                  'linear-gradient(360deg, #FBBF24, #2563EB)',
-                ],
-              }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
-            />
-
-            {/* Inner circle with content */}
-            <motion.div
-              className="relative w-64 h-64 bg-gradient-to-br from-secondary-blue to-surface-blue flex items-center justify-center"
-              style={{ borderRadius: 'inherit' }}
+              className="blueprint-card"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
             >
-              <motion.div
-                className="text-center text-white"
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              >
+              <div className="blueprint-grid" />
+              <div className="blueprint-corner blueprint-corner-tl" />
+              <div className="blueprint-corner blueprint-corner-br" />
+
+              <div className="blueprint-content">
                 <motion.div
-                  className="text-6xl font-bold mb-2"
-                  animate={{
-                    backgroundImage: [
-                      'linear-gradient(135deg, #FBBF24, #fcd34d)',
-                      'linear-gradient(135deg, #2563EB, #FBBF24)',
-                      'linear-gradient(135deg, #FBBF24, #fcd34d)',
-                    ],
-                  }}
-                  style={{
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="blueprint-status"
+                  animate={{ opacity: [1, 0.4, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  IO
+                  <span className="status-dot" />
+                  ACTIVE — THE ARK LEGACY
                 </motion.div>
-                <p className="text-accent-gold/80 font-semibold text-sm">Building Excellence</p>
-              </motion.div>
+
+                <div className="blueprint-id">IO / QA-QC / 2026</div>
+
+                <div className="blueprint-label">Building Engineer</div>
+                <div className="blueprint-sublabel">QA/QC Manager · BIM Specialist</div>
+
+                <div className="blueprint-divider" />
+
+                <div className="blueprint-meta">
+                  <div className="meta-row">
+                    <span>LOCATION</span>
+                    <span>Lagos, Nigeria</span>
+                  </div>
+                  <div className="meta-row">
+                    <span>CAPACITY</span>
+                    <span>100,000</span>
+                  </div>
+                  <div className="meta-row">
+                    <span>STATUS</span>
+                    <span className="meta-active">In Progress</span>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
-
-          {/* Orbiting elements */}
-          <motion.div
-            className="absolute w-full h-full flex items-center justify-center"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-          >
-            <motion.div
-              className="absolute w-4 h-4 bg-accent-gold rounded-full"
-              style={{ top: '20%', right: '10%' }}
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </motion.div>
-
-          <motion.div
-            className="absolute w-full h-full flex items-center justify-center"
-            animate={{ rotate: -360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          >
-            <motion.div
-              className="absolute w-3 h-3 bg-primary-blue rounded-full"
-              style={{ bottom: '15%', left: '5%' }}
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 2.5, repeat: Infinity }}
-            />
-          </motion.div>
-        </motion.div>
+      </motion.div>
+      <motion.div
+        className="hero-credentials"
+        variants={itemVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <div className="credential-badge">
+          <span className="credential-number">5+</span>
+          <span className="credential-label">Years Experience</span>
+        </div>
+        <div className="credential-divider" />
+        <div className="credential-badge">
+          <span className="credential-number">100K</span>
+          <span className="credential-label">Capacity Project</span>
+        </div>
+        <div className="credential-divider" />
+        <div className="credential-badge">
+          <span className="credential-number">6</span>
+          <span className="credential-label">Certifications</span>
+        </div>
       </motion.div>
     </section>
   )

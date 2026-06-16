@@ -1,4 +1,4 @@
-import { Variants } from 'framer-motion'
+import type { Variants } from 'framer-motion'
 
 /* ============================================
    FRAMER MOTION ANIMATION VARIANTS
@@ -313,12 +313,11 @@ export const buttonGoldHover: Variants = {
 
 // Scroll-triggered animations
 export const inViewAnimation = (
-  threshold = 0.2,
-  delay = 0
+  threshold = 0.2
 ): {
-  initial: any
-  whileInView: any
-  viewport: any
+  initial: string
+  whileInView: string
+  viewport: { once: boolean; amount: number }
 } => ({
   initial: 'hidden',
   whileInView: 'visible',

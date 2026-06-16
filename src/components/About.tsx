@@ -6,10 +6,8 @@ import {
   fadeInUp,
   staggerContainer,
   staggerItem,
-  hoverLift,
   countUpAnimation,
-} from '../../utils/animations'
-import './About.css'
+} from '../utils/animations'
 
 export const About: React.FC = () => {
   const { ref, inView } = useInView({
@@ -27,37 +25,42 @@ export const About: React.FC = () => {
   const itemVariants = staggerItem
 
   return (
-    <section id="about" className="section about-section">
-      <div className="container">
+    <section id="about" className="relative py-20 overflow-hidden bg-linear-to-br from-surface-blue to-secondary-blue">
+      {/* Background decorations */}
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-600/10 blur-[40px] rounded-full animate-float" />
+      <div className="absolute -bottom-36 -right-36 w-[500px] h-[500px] bg-yellow-400/5 blur-[50px] rounded-full animate-float-delayed" />
+
+      <div className="container mx-auto px-8 max-w-6xl relative z-10">
         <motion.h2
-          className="section-title"
+          className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-primary-blue relative inline-block w-full"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeInUp}
         >
-          About Me
+          <span className="text-white">About Me</span>
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-accent-gold rounded-sm" />
         </motion.h2>
 
         <motion.div
-          className="about-content"
+          className="grid grid-cols-1 gap-12 relative z-10"
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <motion.div className="about-text" variants={itemVariants}>
-            <motion.p variants={itemVariants}>
+          <motion.div className="text-white/85" variants={itemVariants}>
+            <motion.p className="text-lg md:text-xl leading-relaxed mb-6" variants={itemVariants}>
               I'm a dedicated Building Engineer with extensive experience in construction management, quality control, and project supervision. My passion lies in ensuring the highest standards of construction excellence across every project I undertake.
             </motion.p>
 
-            <motion.p variants={itemVariants}>
+            <motion.p className="text-lg md:text-xl leading-relaxed mb-6" variants={itemVariants}>
               Currently serving as Quality Control Manager at Advanced Engineering Consultants, I lead quality assurance initiatives on high-profile projects including The Ark Legacy Project—a magnificent 100,000-capacity church auditorium.
             </motion.p>
 
             <motion.div
-              className="highlight-stats"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -66,12 +69,13 @@ export const About: React.FC = () => {
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="stat"
+                  className="card-glass p-8 md:p-10 text-center relative overflow-hidden group"
                   variants={itemVariants}
-                  {...hoverLift}
                 >
+                  <div className="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-accent-gold/20 to-transparent transition-all duration-700 ease-in-out group-hover:left-full z-0" />
+                  
                   <motion.div
-                    className="stat-number"
+                    className="text-5xl md:text-6xl font-extrabold text-gradient-gold mb-2 drop-shadow-lg relative z-10"
                     variants={countUpAnimation}
                     custom={0.2 + index * 0.1}
                     initial="hidden"
@@ -87,7 +91,7 @@ export const About: React.FC = () => {
                   </motion.div>
 
                   <motion.div
-                    className="stat-label"
+                    className="text-white/90 font-bold text-sm uppercase tracking-wider relative z-10"
                     initial={{ opacity: 0 }}
                     animate={inView ? { opacity: 1 } : {}}
                     transition={{ delay: 0.4 + index * 0.1 }}

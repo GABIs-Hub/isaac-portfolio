@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap');
 
 @import "tailwindcss";
 
@@ -6,7 +6,7 @@
   --color-primary-blue: #0c0c68;
   --color-secondary-blue: #0f182e;
   --color-surface-blue: #1E293B;
-  --color-accent-gold: #936e0f;
+  --color-accent-gold: #eab308;
 
   --color-text-primary: #F8FAFC;
   --color-text-muted: #79808a;
@@ -16,7 +16,7 @@
   --primary-blue: #0c0c68;
   --secondary-blue: #0f182e;
   --surface-blue: #1E293B;
-  --accent-gold: #936e0f;
+  --accent-gold: #eab308;
   --text-primary: #F8FAFC;
   --text-muted: #79808a;
 
@@ -34,26 +34,37 @@ body {
   color: var(--text-primary);
   overflow-x: hidden;
   scroll-behavior: smooth;
+  font-family: 'Syne', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Smooth scrolling for all browsers */
 @supports (scroll-behaviour: smooth) {
   html {
     scroll-behavior: smooth;
   }
 }
 
-/* Utility Classes */
+/* Premium Utility Classes */
 .card-glass {
-  @apply bg-gradient-to-br from-blue-500/10 via-transparent to-yellow-400/5 backdrop-blur-xs border border-white/10 rounded-lg transition-all duration-300;
+  @apply bg-gradient-to-br from-blue-500/10 via-transparent to-yellow-400/5 backdrop-blur-md border border-white/10 rounded-lg transition-all duration-300;
 }
 
 .card-glass:hover {
-  @apply border-accent-gold/30 shadow-lg;
+  @apply border-accent-gold/30 shadow-lg shadow-accent-gold/5;
 }
 
 .text-gradient-gold {
@@ -61,7 +72,7 @@ html {
 }
 
 .text-gradient-blue {
-  @apply bg-gradient-to-r from-primary-blue to-blue-600 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent;
 }
 
 .section-container {
@@ -72,17 +83,31 @@ html {
   @apply transition-all duration-500 ease-in;
 }
 
+/* Custom Keyframes */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
-}
-
-@keyframes pulseGlowGold {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
-  50% { box-shadow: 0 0 0 12px rgba(251, 191, 36, 0); }
 }
 
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-float-delayed { animation: float 6s ease-in-out 1s infinite; }
 .animate-float-delayed-2 { animation: float 6s ease-in-out 2s infinite; }
 .animate-float-delayed-3 { animation: float 6s ease-in-out 3s infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+.blueprint-grid {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}

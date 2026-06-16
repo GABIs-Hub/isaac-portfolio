@@ -1,12 +1,12 @@
-import Header from './components/Header/Header'
-import Hero from './components/Hero/Hero'
-import About from './components/About/About'
-import Skills from './components/Skills/Skills'
-import Certifications from './components/Certifications/Certifications'
-import Projects from './components/Projects/Projects'
-import Experience from './components/Experience/Experience'
-import Contact from './components/Contact/Contact'
-import Footer from './components/Footer/Footer'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import About from './components/About'
+import Skills from './components/Skills'
+import Certifications from './components/Certifications'
+import Projects from './components/Projects'
+import Experience from './components/Experience'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
 
 function App() {
   const scrollToSection = (sectionId: string) => {

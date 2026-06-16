@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState, useRef } from 'react'
 
 export const useTypingAnimation = (text: string, speed: number = 60) => {
@@ -9,6 +10,7 @@ export const useTypingAnimation = (text: string, speed: number = 60) => {
     if (!text) return
 
     indexRef.current = 0
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDisplayedText('')
     setIsComplete(false)
 

@@ -36,8 +36,8 @@ export const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden bg-linear-to-br from-primary-blue to-secondary-blue text-white">
-      <div className="absolute -top-36 left-0 w-[400px] h-[400px] bg-yellow-400/10 blur-[40px] rounded-full animate-float" />
-      <div className="absolute -bottom-24 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-[50px] rounded-full animate-float-delayed" />
+      <div className="absolute -top-36 left-0 w-100 h-100 bg-yellow-400/10 blur-2xl rounded-full animate-float" />
+      <div className="absolute -bottom-24 right-0 w-125 h-125 bg-blue-600/10 blur-[50px] rounded-full animate-float-delayed" />
 
       <div className="container mx-auto px-8 max-w-5xl relative z-10">
         <motion.h2
@@ -48,7 +48,7 @@ export const Contact: React.FC = () => {
           variants={fadeInUp}
         >
           Let's Connect
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-accent-gold to-yellow-200 rounded-sm" />
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-accent-gold to-yellow-200 rounded-sm" />
         </motion.h2>
 
         <motion.div

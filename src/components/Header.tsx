@@ -80,7 +80,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
       <nav className="w-full">
         <div className="container mx-auto px-6 lg:px-8 max-w-7xl flex justify-between items-center">
           <motion.div
-            className="text-3xl font-extrabold tracking-widest bg-gradient-to-br from-accent-gold to-yellow-300 bg-clip-text text-transparent cursor-pointer"
+            className="text-3xl font-extrabold tracking-widest bg-linear-to-br from-accent-gold to-yellow-300 bg-clip-text text-transparent cursor-pointer"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
             onClick={() => handleNavigate('home')}
@@ -89,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
           </motion.div>
 
           <button
-            className="md:hidden flex items-center justify-center text-accent-gold p-2 z-[200] hover:drop-shadow-[0_0_10px_rgba(251,191,36,0.5)] transition-all"
+            className="md:hidden flex items-center justify-center text-accent-gold p-2 z-200 hover:drop-shadow-[0_0_10px_rgba(251,191,36,0.5)] transition-all"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -140,7 +140,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
                     whileHover="whileHover"
                   >
                     {item.label}
-                    <div className={`absolute -bottom-1.5 left-0 h-0.5 bg-gradient-to-r from-accent-gold to-yellow-300 transition-all duration-300 rounded-sm ${activeSection === item.id ? 'w-full' : 'w-0'}`} />
+                    <div className={`absolute -bottom-1.5 left-0 h-0.5 bg-linear-to-r from-accent-gold to-yellow-300 transition-all duration-300 rounded-sm ${activeSection === item.id ? 'w-full' : 'w-0'}`} />
                   </motion.a>
                 </li>
               ))}
@@ -150,7 +150,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
           <AnimatePresence>
             {isMenuOpen && (
               <motion.ul
-                className="fixed md:hidden top-0 right-0 w-full max-w-[300px] h-screen flex flex-col gap-6 p-8 pt-24 bg-linear-to-br from-secondary-blue to-[#0C1117] border-l border-blue-600/20 shadow-[-10px_10px_30px_rgba(0,0,0,0.4)] z-[150] m-0"
+                className="fixed md:hidden top-0 right-0 w-full max-w-75 h-screen flex flex-col gap-6 p-8 pt-24 bg-linear-to-br from-secondary-blue to-[#0C1117] border-l border-blue-600/20 shadow-[-10px_10px_30px_rgba(0,0,0,0.4)] z-[150] m-0"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
@@ -169,7 +169,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
                       whileHover="whileHover"
                     >
                       {item.label}
-                      <div className={`absolute -bottom-2 left-0 h-0.5 bg-gradient-to-r from-accent-gold to-yellow-300 transition-all duration-300 rounded-sm ${activeSection === item.id ? 'w-12' : 'w-0'}`} />
+                      <div className={`absolute -bottom-2 left-0 h-0.5 bg-linear-to-r from-accent-gold to-yellow-300 transition-all duration-300 rounded-sm ${activeSection === item.id ? 'w-12' : 'w-0'}`} />
                     </motion.a>
                   </motion.li>
                 ))}

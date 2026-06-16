@@ -27,8 +27,8 @@ export const About: React.FC = () => {
   return (
     <section id="about" className="relative py-20 overflow-hidden bg-linear-to-br from-surface-blue to-secondary-blue">
       {/* Background decorations */}
-      <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-600/10 blur-[40px] rounded-full animate-float" />
-      <div className="absolute -bottom-36 -right-36 w-[500px] h-[500px] bg-yellow-400/5 blur-[50px] rounded-full animate-float-delayed" />
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-600/10 blur-2xl rounded-full animate-float" />
+      <div className="absolute -bottom-36 -right-36 w-125 h-125 bg-yellow-400/5 blur-[50px] rounded-full animate-float-delayed" />
 
       <div className="container mx-auto px-8 max-w-6xl relative z-10">
         <motion.h2
@@ -39,7 +39,7 @@ export const About: React.FC = () => {
           variants={fadeInUp}
         >
           <span className="text-white">About Me</span>
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-accent-gold rounded-sm" />
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-blue-500 to-accent-gold rounded-sm" />
         </motion.h2>
 
         <motion.div
@@ -72,7 +72,7 @@ export const About: React.FC = () => {
                   className="card-glass p-8 md:p-10 text-center relative overflow-hidden group"
                   variants={itemVariants}
                 >
-                  <div className="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-accent-gold/20 to-transparent transition-all duration-700 ease-in-out group-hover:left-full z-0" />
+                  <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-accent-gold/20 to-transparent transition-all duration-700 ease-in-out group-hover:left-full z-0" />
                   
                   <motion.div
                     className="text-5xl md:text-6xl font-extrabold text-gradient-gold mb-2 drop-shadow-lg relative z-10"

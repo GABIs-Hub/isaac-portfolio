@@ -30,7 +30,7 @@ const ProjectCard: React.FC<ProjectData & { index: number }> = ({
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
       {/* Top border hover effect */}
-      <div className="absolute top-0 left-0 h-1 bg-gradient-to-r from-accent-gold to-yellow-300 w-0 transition-all duration-400 ease-out group-hover:w-full" />
+      <div className="absolute top-0 left-0 h-1 bg-linear-to-r from-accent-gold to-yellow-300 w-0 transition-all duration-400 ease-out group-hover:w-full" />
       
       {/* Background glow on hover */}
       <div className="absolute inset-0 bg-radial-[at_50%_0%] from-accent-gold/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
@@ -123,7 +123,7 @@ export const Projects: React.FC = () => {
 
   return (
     <section id="projects" className="py-24 relative overflow-hidden bg-linear-to-br from-surface-blue to-secondary-blue">
-      <div className="absolute -top-36 -right-24 w-[400px] h-[400px] bg-yellow-400/10 blur-[40px] rounded-full animate-float z-0" />
+      <div className="absolute -top-36 -right-24 w-100 h-100 bg-yellow-400/10 blur-2xl rounded-full animate-float z-0" />
 
       <div className="container mx-auto px-8 max-w-7xl relative z-10">
         <motion.h2
@@ -134,7 +134,7 @@ export const Projects: React.FC = () => {
           variants={fadeInUp}
         >
           <span className="text-white">Featured Projects</span>
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-accent-gold rounded-sm" />
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-blue-500 to-accent-gold rounded-sm" />
         </motion.h2>
 
         <motion.div

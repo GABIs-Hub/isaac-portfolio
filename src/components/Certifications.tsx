@@ -28,7 +28,7 @@ export const Certifications: React.FC = () => {
           variants={fadeInUp}
         >
           <span className="text-white">Certifications</span>
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-accent-gold rounded-sm" />
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-blue-500 to-accent-gold rounded-sm" />
         </motion.h2>
 
         <motion.div

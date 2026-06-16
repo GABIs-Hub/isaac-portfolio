@@ -47,7 +47,7 @@ export const Experience: React.FC = () => {
 
   return (
     <section id="experience" className="py-24 relative overflow-hidden bg-linear-to-br from-secondary-blue to-surface-blue">
-      <div className="absolute -top-24 -left-24 w-[400px] h-[400px] bg-blue-600/10 blur-[40px] rounded-full animate-float" />
+      <div className="absolute -top-24 -left-24 w-100 h-100 bg-blue-600/10 blur-2xl rounded-full animate-float" />
       
       <div className="container mx-auto px-8 max-w-4xl relative z-10">
         <motion.h2
@@ -58,7 +58,7 @@ export const Experience: React.FC = () => {
           variants={fadeInUp}
         >
           <span className="text-white">Professional Journey</span>
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-accent-gold rounded-sm" />
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-blue-500 to-accent-gold rounded-sm" />
         </motion.h2>
 
         <motion.div
@@ -69,7 +69,7 @@ export const Experience: React.FC = () => {
           viewport={{ once: true, amount: 0.2 }}
         >
           {/* Vertical timeline line */}
-          <div className="absolute left-[27px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-gold via-accent-gold/20 to-accent-gold origin-top" />
+          <div className="absolute left-6.75 top-0 bottom-0 w-0.5 bg-linear-to-b from-accent-gold via-accent-gold/20 to-accent-gold origin-top" />
 
           {experienceData.map((exp, index) => (
             <motion.div
@@ -84,10 +84,10 @@ export const Experience: React.FC = () => {
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
               {/* Highlight background on hover */}
-              <div className="absolute inset-0 w-0 bg-gradient-to-r from-transparent via-accent-gold/10 to-transparent transition-all duration-500 ease-out group-hover:w-full z-0 rounded-xl" />
+              <div className="absolute inset-0 w-0 bg-linear-to-r from-transparent via-accent-gold/10 to-transparent transition-all duration-500 ease-out group-hover:w-full z-0 rounded-xl" />
 
               <motion.div
-                className={`absolute left-[16px] top-10 w-6 h-6 rounded-full border-[3px] z-10 transition-all duration-300 ${
+                className={`absolute left-4 top-10 w-6 h-6 rounded-full border-[3px] z-10 transition-all duration-300 ${
                   exp.isActive 
                     ? 'bg-linear-to-br from-accent-gold to-yellow-300 border-accent-gold shadow-[0_0_20px_rgba(251,191,36,0.6),0_0_0_6px_rgba(251,191,36,0.2)]' 
                     : 'bg-linear-to-br from-primary-blue to-blue-900 border-accent-gold shadow-[0_0_0_6px_rgba(37,99,235,0.1)] group-hover:shadow-[0_0_20px_rgba(251,191,36,0.4),0_0_0_6px_rgba(37,99,235,0.2)] group-hover:scale-125'

@@ -19,8 +19,8 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-center py-20 bg-linear-to-br from-primary-blue to-secondary-blue text-white overflow-hidden z-0">
       {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-400/10 blur-[40px] rounded-full animate-float z-[-1]" />
-      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600/10 blur-[50px] rounded-full animate-float-delayed z-[-1]" />
+      <div className="absolute top-0 right-0 w-125 h-125 bg-yellow-400/10 blur-2xl rounded-full animate-float z-[-1]" />
+      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-150 h-150 bg-blue-600/10 blur-[50px] rounded-full animate-float-delayed z-[-1]" />
 
       <motion.div
         className="container mx-auto px-6 lg:px-8 max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
@@ -78,11 +78,11 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
 
         {/* Profile visualization with blueprint card */}
         <motion.div
-          className="relative h-[400px] md:h-[500px] flex items-center justify-center lg:justify-end perspective-[1000px]"
+          className="relative h-100 md:h-125 flex items-center justify-center lg:justify-end perspective-[1000px]"
           variants={fadeInRight}
         >
           <motion.div
-            className="relative w-full max-w-[380px] aspect-[4/5] bg-linear-to-br from-blue-600/10 to-slate-900/60 border border-accent-gold/25 rounded-xl p-8 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col justify-end gap-3"
+            className="relative w-full max-w-95 aspect-4/5 bg-linear-to-br from-blue-600/10 to-slate-900/60 border border-accent-gold/25 rounded-xl p-8 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col justify-end gap-3"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}

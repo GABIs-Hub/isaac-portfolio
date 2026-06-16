@@ -13,12 +13,12 @@
 }
 
 :root {
-  --primary-blue: #0c0c68;
-  --secondary-blue: #0f182e;
-  --surface-blue: #1E293B;
-  --accent-gold: #eab308;
-  --text-primary: #F8FAFC;
-  --text-muted: #79808a;
+  --primary-blue: #042d55;
+  --secondary-blue: #0b1121;
+  --surface-blue: #232d3d;
+  --accent-gold: #b48d17;
+  --text-primary: #c3d5e7;
+  --text-muted: #6c7580;
 
   font-family: 'Syne', sans-serif;
 }
@@ -60,7 +60,7 @@ html {
 
 /* Premium Utility Classes */
 .card-glass {
-  @apply bg-gradient-to-br from-blue-500/10 via-transparent to-yellow-400/5 backdrop-blur-md border border-white/10 rounded-lg transition-all duration-300;
+  @apply bg-linear-to-br from-blue-500/10 via-transparent to-yellow-400/5 backdrop-blur-md border border-white/10 rounded-lg transition-all duration-300;
 }
 
 .card-glass:hover {
@@ -68,11 +68,11 @@ html {
 }
 
 .text-gradient-gold {
-  @apply bg-gradient-to-r from-accent-gold to-yellow-200 bg-clip-text text-transparent;
+  @apply bg-linear-to-r from-accent-gold to-yellow-200 bg-clip-text text-transparent;
 }
 
 .text-gradient-blue {
-  @apply bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent;
+  @apply bg-linear-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent;
 }
 
 .section-container {

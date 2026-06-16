@@ -81,13 +81,15 @@ export const About: React.FC = () => {
                     initial="hidden"
                     animate={inView ? 'visible' : 'hidden'}
                   >
-                    {inView && (
+                    {/* {inView && (
                       <CountUp
                         end={stat.number}
                         duration={2.5}
                         suffix={stat.suffix}
                       />
-                    )}
+                    )} */}
+                    {stat.number}
+                    {stat.suffix}
                   </motion.div>
 
                   <motion.div

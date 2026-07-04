@@ -8,7 +8,6 @@ import {
   staggerItem,
   profileMorphBlob,
   profileGlow,
-  badgePopIn,
   countUpContainer,
   countUpNumber,
 } from '../utils/animations'
@@ -123,10 +122,9 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
             {/* Top Right Badge - QA/QC Expert Manager */}
             <motion.div
               className="absolute top-0 right-0 md:top-6 md:right-6 bg-secondary-blue/80 border border-accent-gold/30 rounded-lg px-3 py-2 backdrop-blur-md shadow-lg hover:shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-shadow"
-              variants={badgePopIn}
-              initial="hidden"
-              animate="visible"
-              custom={0.3}
+              initial={{ opacity: 0, scale: 0.5, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5, ease: 'easeOut' }}
             >
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-accent-gold" />
@@ -140,10 +138,9 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
             {/* Left Badge - Experience */}
             <motion.div
               className="absolute left-0 bottom-32 md:left-0 md:bottom-40 bg-secondary-blue/80 border border-accent-gold/30 rounded-lg px-3 py-2 backdrop-blur-md shadow-lg hover:shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-shadow"
-              variants={badgePopIn}
-              initial="hidden"
-              animate="visible"
-              custom={0.4}
+              initial={{ opacity: 0, scale: 0.5, x: -20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.5, ease: 'easeOut' }}
             >
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 rounded-full border border-white/50 flex items-center justify-center">
@@ -159,10 +156,9 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
             {/* Top Badge - Portfolio */}
             <motion.div
               className="absolute -top-6 left-1/2 -translate-x-1/2 bg-transparent border border-accent-gold/40 rounded-full px-4 py-2 backdrop-blur-md hover:border-accent-gold/80 hover:shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-all"
-              variants={badgePopIn}
-              initial="hidden"
-              animate="visible"
-              custom={0.2}
+              initial={{ opacity: 0, scale: 0.5, y: -15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5, ease: 'easeOut' }}
             >
               <div className="text-xs font-bold text-accent-gold tracking-wider whitespace-nowrap">
                 PORTFOLIO • ENGINEERING EXCELLENCE

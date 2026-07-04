@@ -405,10 +405,10 @@ export const mobileNavSlide: Variants = {
 // Badge pop-in animation
 export const badgePopIn: Variants = {
   hidden: { opacity: 0, scale: 0.5, y: 20 },
-  visible: (delay = 0) => ({
+  visible: {
     opacity: 1,
     scale: 1,
     y: 0,
-    transition: { delay, duration: 0.5, ease: 'easeOut' },
-  }),
+    transition: { duration: 0.5, ease: 'easeOut' },
+  },
 }

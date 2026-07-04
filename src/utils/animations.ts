@@ -323,3 +323,92 @@ export const inViewAnimation = (
   whileInView: 'visible',
   viewport: { once: true, amount: threshold },
 })
+
+// Count-up number animation with stagger
+export const countUpNumber: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+}
+
+export const countUpContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+// Enhanced profile pulse with gold glow
+export const profileGlow: Variants = {
+  animate: {
+    boxShadow: [
+      '0 0 30px rgba(251, 191, 36, 0.2)',
+      '0 0 60px rgba(251, 191, 36, 0.4)',
+      '0 0 30px rgba(251, 191, 36, 0.2)',
+    ],
+    transition: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+  },
+}
+
+// Profile image morphing blob effect
+export const profileMorphBlob: Variants = {
+  animate: {
+    borderRadius: [
+      '60% 40% 30% 70% / 60% 30% 70% 40%',
+      '30% 60% 70% 40% / 50% 60% 30% 60%',
+      '40% 60% 60% 30% / 60% 40% 40% 70%',
+      '60% 40% 30% 70% / 60% 30% 70% 40%',
+    ],
+    transition: {
+      duration: 8,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  },
+}
+
+// Navbar link glow effect
+export const navbarGlow: Variants = {
+  whileHover: {
+    color: '#FBBF24',
+    textShadow: [
+      '0 0 0px rgba(251, 191, 36, 0)',
+      '0 0 10px rgba(251, 191, 36, 0.6)',
+      '0 0 20px rgba(251, 191, 36, 0.4)',
+    ],
+    transition: { duration: 0.4, ease: 'easeOut' },
+  },
+}
+
+// Mobile navbar slide animation
+export const mobileNavSlide: Variants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: 'easeOut' },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.3, ease: 'easeIn' },
+  },
+}
+
+// Badge pop-in animation
+export const badgePopIn: Variants = {
+  hidden: { opacity: 0, scale: 0.5, y: 20 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { delay, duration: 0.5, ease: 'easeOut' },
+  }),
+}

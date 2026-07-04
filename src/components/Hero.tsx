@@ -1,10 +1,16 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { CountUp } from 'react-countup'
 import {
   fadeInUp,
   fadeInRight,
   staggerContainer,
   staggerItem,
+  profileMorphBlob,
+  profileGlow,
+  badgePopIn,
+  countUpContainer,
+  countUpNumber,
 } from '../utils/animations'
 
 interface HeroProps {
@@ -93,22 +99,34 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
             {/* Dashed Circular Border */}
             <div className="absolute inset-3 rounded-full border-2 border-dashed border-accent-gold/40" />
 
-            {/* Profile Image Circle */}
-            <div className="relative w-64 h-96 md:w-72 md:h-[28rem] rounded-full overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border-4 border-accent-gold/20">
+            {/* Profile Image Circle with Blob Morph */}
+            <motion.div 
+              className="relative w-64 h-96 md:w-72 md:h-[28rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border-4 border-accent-gold/20"
+              variants={profileMorphBlob}
+              animate="animate"
+            >
               <img 
                 src="/isaac-profile.png" 
                 alt="Isaac Ogabi" 
                 className="w-full h-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-secondary-blue/40 to-transparent" />
-            </div>
+            </motion.div>
+            
+            {/* Glow Effect Container */}
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              variants={profileGlow}
+              animate="animate"
+            />
 
             {/* Top Right Badge - QA/QC Expert Manager */}
             <motion.div
-              className="absolute top-0 right-0 md:top-6 md:right-6 bg-secondary-blue/80 border border-accent-gold/30 rounded-lg px-3 py-2 backdrop-blur-md shadow-lg"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              className="absolute top-0 right-0 md:top-6 md:right-6 bg-secondary-blue/80 border border-accent-gold/30 rounded-lg px-3 py-2 backdrop-blur-md shadow-lg hover:shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-shadow"
+              variants={badgePopIn}
+              initial="hidden"
+              animate="visible"
+              custom={0.3}
             >
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-accent-gold" />
@@ -121,10 +139,11 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
 
             {/* Left Badge - Experience */}
             <motion.div
-              className="absolute left-0 bottom-32 md:left-0 md:bottom-40 bg-secondary-blue/80 border border-accent-gold/30 rounded-lg px-3 py-2 backdrop-blur-md shadow-lg"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
+              className="absolute left-0 bottom-32 md:left-0 md:bottom-40 bg-secondary-blue/80 border border-accent-gold/30 rounded-lg px-3 py-2 backdrop-blur-md shadow-lg hover:shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-shadow"
+              variants={badgePopIn}
+              initial="hidden"
+              animate="visible"
+              custom={0.4}
             >
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 rounded-full border border-white/50 flex items-center justify-center">
@@ -139,10 +158,11 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
 
             {/* Top Badge - Portfolio */}
             <motion.div
-              className="absolute -top-6 left-1/2 -translate-x-1/2 bg-transparent border border-accent-gold/40 rounded-full px-4 py-2 backdrop-blur-md"
-              initial={{ opacity: 0, y: -15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              className="absolute -top-6 left-1/2 -translate-x-1/2 bg-transparent border border-accent-gold/40 rounded-full px-4 py-2 backdrop-blur-md hover:border-accent-gold/80 hover:shadow-[0_0_20px_rgba(251,191,36,0.3)] transition-all"
+              variants={badgePopIn}
+              initial="hidden"
+              animate="visible"
+              custom={0.2}
             >
               <div className="text-xs font-bold text-accent-gold tracking-wider whitespace-nowrap">
                 PORTFOLIO • ENGINEERING EXCELLENCE
@@ -152,28 +172,55 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
         </motion.div>
       </motion.div>
       
-      {/* Credentials Footer */}
+      {/* Credentials Footer with Count-Up Animations */}
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl mt-12 md:mt-16">
         <motion.div
           className="flex flex-wrap items-center gap-4 md:gap-6 pt-6 border-t border-accent-gold/15"
-          variants={itemVariants}
+          variants={countUpContainer}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
         >
-          <div className="flex flex-col">
-            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">5+</span>
+          <motion.div className="flex flex-col" variants={countUpNumber}>
+            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">
+              <CountUp 
+                start={0} 
+                end={5} 
+                duration={2.5} 
+                suffix="+"
+                enableScrollSpy={true}
+                scrollSpyOnce={true}
+              />
+            </span>
             <span className="text-[0.65rem] md:text-xs text-white/60 uppercase tracking-widest mt-1">Years Experience</span>
-          </div>
-          <div className="w-px h-8 bg-accent-gold/20" />
-          <div className="flex flex-col">
-            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">100K</span>
+          </motion.div>
+          <motion.div className="w-px h-8 bg-accent-gold/20" />
+          <motion.div className="flex flex-col" variants={countUpNumber}>
+            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">
+              <CountUp 
+                start={0} 
+                end={100} 
+                duration={2.5}
+                suffix="K"
+                enableScrollSpy={true}
+                scrollSpyOnce={true}
+              />
+            </span>
             <span className="text-[0.65rem] md:text-xs text-white/60 uppercase tracking-widest mt-1">Capacity Project</span>
-          </div>
-          <div className="w-px h-8 bg-accent-gold/20" />
-          <div className="flex flex-col">
-            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">6</span>
+          </motion.div>
+          <motion.div className="w-px h-8 bg-accent-gold/20" />
+          <motion.div className="flex flex-col" variants={countUpNumber}>
+            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">
+              <CountUp 
+                start={0} 
+                end={6} 
+                duration={2.5}
+                enableScrollSpy={true}
+                scrollSpyOnce={true}
+              />
+            </span>
             <span className="text-[0.65rem] md:text-xs text-white/60 uppercase tracking-widest mt-1">Certifications</span>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

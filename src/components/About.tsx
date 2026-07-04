@@ -1,12 +1,13 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import CountUp from 'react-countup'
+import { CountUp } from 'react-countup'
 import { useInView } from 'react-intersection-observer'
 import {
   fadeInUp,
   staggerContainer,
   staggerItem,
   countUpAnimation,
+  hoverLift,
 } from '../utils/animations'
 
 export const About: React.FC = () => {
@@ -69,31 +70,33 @@ export const About: React.FC = () => {
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="card-glass p-8 md:p-10 text-center relative overflow-hidden group"
+                  className="card-glass p-8 md:p-10 text-center relative overflow-hidden group hover:border-accent-gold/40 transition-all"
                   variants={itemVariants}
+                  whileHover="whileHover"
+                  {...hoverLift}
                 >
                   <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-accent-gold/20 to-transparent transition-all duration-700 ease-in-out group-hover:left-full z-0" />
                   
                   <motion.div
-                    className="text-5xl md:text-6xl font-extrabold text-gradient-gold mb-2 drop-shadow-lg relative z-10"
+                    className="text-5xl md:text-6xl font-extrabold bg-linear-to-br from-accent-gold to-yellow-300 bg-clip-text text-transparent mb-2 drop-shadow-lg relative z-10"
                     variants={countUpAnimation}
                     custom={0.2 + index * 0.1}
                     initial="hidden"
                     animate={inView ? 'visible' : 'hidden'}
                   >
-                    {/* {inView && (
+                    {inView && (
                       <CountUp
                         end={stat.number}
                         duration={2.5}
                         suffix={stat.suffix}
+                        enableScrollSpy={true}
+                        scrollSpyOnce={true}
                       />
-                    )} */}
-                    {stat.number}
-                    {stat.suffix}
+                    )}
                   </motion.div>
 
                   <motion.div
-                    className="text-white/90 font-bold text-sm uppercase tracking-wider relative z-10"
+                    className="text-white/90 font-bold text-sm uppercase tracking-widest relative z-10"
                     initial={{ opacity: 0 }}
                     animate={inView ? { opacity: 1 } : {}}
                     transition={{ delay: 0.4 + index * 0.1 }}

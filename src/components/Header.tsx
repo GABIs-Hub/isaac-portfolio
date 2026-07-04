@@ -5,6 +5,9 @@ import type { Variants } from 'framer-motion'
 import {
   fadeInDown,
   navItemHover,
+  navbarGlow,
+  mobileNavSlide,
+  buttonHover,
 } from '../utils/animations'
 
 interface HeaderProps {
@@ -71,7 +74,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
 
   return (
     <motion.header
-      className="sticky top-0 z-50 bg-linear-to-br from-primary-blue to-blue-900 py-4 shadow-[0_10px_30px_rgba(37,99,235,0.2)] backdrop-blur-md bg-opacity-95"
+      className="sticky top-0 z-50 bg-linear-to-br from-primary-blue to-blue-900 py-4 shadow-[0_10px_40px_rgba(37,99,235,0.3)] backdrop-blur-xl bg-opacity-95 border-b border-accent-gold/10"
       variants={fadeInDown}
       initial="hidden"
       animate="visible"
@@ -79,9 +82,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
       <nav className="w-full">
         <div className="container mx-auto px-6 lg:px-8 max-w-7xl flex justify-between items-center">
           <motion.div
-            className="text-3xl font-extrabold tracking-widest bg-linear-to-br from-accent-gold to-yellow-300 bg-clip-text text-transparent cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
+            className="text-3xl font-extrabold tracking-widest bg-linear-to-br from-accent-gold to-yellow-300 bg-clip-text text-transparent cursor-pointer hover:drop-shadow-[0_0_15px_rgba(251,191,36,0.6)]"
+            variants={navbarGlow}
+            whileHover="whileHover"
             onClick={() => handleNavigate('home')}
           >
             IO.
@@ -130,16 +133,24 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
 
           <div className="hidden md:block">
             <ul className="flex list-none gap-8 items-center m-0 p-0">
-              {menuItems.map((item) => (
-                <li key={item.id}>
+              {menuItems.map((item, index) => (
+                <li key={item.id} className="relative">
                   <motion.a
-                    className={`relative cursor-pointer text-[15px] font-bold tracking-wide transition-colors ${activeSection === item.id ? 'text-accent-gold' : 'text-white/90 hover:text-accent-gold'}`}
+                    className={`relative cursor-pointer text-[15px] font-bold tracking-wide uppercase transition-all duration-300 ${activeSection === item.id ? 'text-accent-gold drop-shadow-[0_0_10px_rgba(251,191,36,0.4)]' : 'text-white/80'}`}
                     onClick={() => handleNavigate(item.id)}
-                    variants={navItemHover}
+                    variants={navbarGlow}
                     whileHover="whileHover"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.4 }}
                   >
                     {item.label}
-                    <div className={`absolute -bottom-1.5 left-0 h-0.5 bg-linear-to-r from-accent-gold to-yellow-300 transition-all duration-300 rounded-sm ${activeSection === item.id ? 'w-full' : 'w-0'}`} />
+                    <motion.div 
+                      className="absolute -bottom-2 left-0 h-0.5 bg-linear-to-r from-accent-gold to-yellow-300 rounded-sm"
+                      initial={{ width: 0 }}
+                      animate={{ width: activeSection === item.id ? '100%' : '0%' }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                    />
                   </motion.a>
                 </li>
               ))}
@@ -149,26 +160,33 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
           <AnimatePresence>
             {isMenuOpen && (
               <motion.ul
-                className="fixed md:hidden top-0 right-0 w-full max-w-75 h-screen flex flex-col gap-6 p-8 pt-24 bg-linear-to-br from-secondary-blue to-[#0C1117] border-l border-blue-600/20 shadow-[-10px_10px_30px_rgba(0,0,0,0.4)] z-[150] m-0"
-                variants={containerVariants}
+                className="fixed md:hidden top-0 right-0 w-full max-w-75 h-screen flex flex-col gap-8 p-8 pt-28 bg-linear-to-br from-secondary-blue via-blue-900 to-[#0C1117] border-l border-blue-600/30 shadow-[-10px_10px_40px_rgba(0,0,0,0.6)] backdrop-blur-lg z-[150] m-0"
+                variants={mobileNavSlide}
                 initial="hidden"
                 animate="visible"
-                exit="hidden"
+                exit="exit"
               >
                 {menuItems.map((item, index) => (
                   <motion.li
                     key={item.id}
-                    variants={itemVariants}
-                    custom={index}
+                    variants={mobileNavSlide}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: index * 0.1, duration: 0.4 }}
                   >
                     <motion.a
-                      className={`block relative cursor-pointer text-lg font-bold transition-colors ${activeSection === item.id ? 'text-accent-gold' : 'text-white/90 hover:text-accent-gold'}`}
+                      className={`block relative cursor-pointer text-xl font-bold uppercase tracking-wide transition-all duration-300 ${activeSection === item.id ? 'text-accent-gold drop-shadow-[0_0_15px_rgba(251,191,36,0.5)]' : 'text-white/80'}`}
                       onClick={() => handleNavigate(item.id)}
-                      variants={navItemHover}
+                      variants={navbarGlow}
                       whileHover="whileHover"
                     >
                       {item.label}
-                      <div className={`absolute -bottom-2 left-0 h-0.5 bg-linear-to-r from-accent-gold to-yellow-300 transition-all duration-300 rounded-sm ${activeSection === item.id ? 'w-12' : 'w-0'}`} />
+                      <motion.div 
+                        className="absolute -bottom-2 left-0 h-0.5 bg-linear-to-r from-accent-gold to-yellow-300 rounded-sm"
+                        initial={{ width: 0 }}
+                        animate={{ width: activeSection === item.id ? '100%' : '0%' }}
+                        transition={{ duration: 0.3, ease: 'easeOut' }}
+                      />
                     </motion.a>
                   </motion.li>
                 ))}

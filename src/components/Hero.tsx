@@ -17,7 +17,7 @@ interface HeroProps {
   onScrollToAbout: () => void
 }
 
-export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }) => {
+const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }) => {
   const containerVariants = staggerContainer
   const itemVariants = staggerItem
 
@@ -168,53 +168,26 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
         </motion.div>
       </motion.div>
       
-      {/* Credentials Footer with Count-Up Animations */}
+      {/* Credentials Footer */}
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl mt-12 md:mt-16">
         <motion.div
           className="flex flex-wrap items-center gap-4 md:gap-6 pt-6 border-t border-accent-gold/15"
-          variants={countUpContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
-          <motion.div className="flex flex-col" variants={countUpNumber}>
-            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">
-              <CountUp 
-                start={0} 
-                end={5} 
-                duration={2.5} 
-                suffix="+"
-                enableScrollSpy={true}
-                scrollSpyOnce={true}
-              />
-            </span>
+          <motion.div className="flex flex-col" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0, duration: 0.6 }}>
+            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">5+</span>
             <span className="text-[0.65rem] md:text-xs text-white/60 uppercase tracking-widest mt-1">Years Experience</span>
           </motion.div>
           <motion.div className="w-px h-8 bg-accent-gold/20" />
-          <motion.div className="flex flex-col" variants={countUpNumber}>
-            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">
-              <CountUp 
-                start={0} 
-                end={100} 
-                duration={2.5}
-                suffix="K"
-                enableScrollSpy={true}
-                scrollSpyOnce={true}
-              />
-            </span>
+          <motion.div className="flex flex-col" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }}>
+            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">100K</span>
             <span className="text-[0.65rem] md:text-xs text-white/60 uppercase tracking-widest mt-1">Capacity Project</span>
           </motion.div>
           <motion.div className="w-px h-8 bg-accent-gold/20" />
-          <motion.div className="flex flex-col" variants={countUpNumber}>
-            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">
-              <CountUp 
-                start={0} 
-                end={6} 
-                duration={2.5}
-                enableScrollSpy={true}
-                scrollSpyOnce={true}
-              />
-            </span>
+          <motion.div className="flex flex-col" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }}>
+            <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">6</span>
             <span className="text-[0.65rem] md:text-xs text-white/60 uppercase tracking-widest mt-1">Certifications</span>
           </motion.div>
         </motion.div>

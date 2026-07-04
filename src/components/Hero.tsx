@@ -10,6 +10,8 @@ import {
   profileGlow,
   countUpContainer,
   countUpNumber,
+  containerVariants,
+  itemVariants,
 } from '../utils/animations'
 
 interface HeroProps {

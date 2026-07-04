@@ -7,7 +7,6 @@ import {
   staggerContainer,
   staggerItem,
   countUpAnimation,
-  hoverLift,
 } from '../utils/animations'
 
 export const About: React.FC = () => {
@@ -72,8 +71,7 @@ export const About: React.FC = () => {
                   key={index}
                   className="card-glass p-8 md:p-10 text-center relative overflow-hidden group hover:border-accent-gold/40 transition-all"
                   variants={itemVariants}
-                  whileHover="whileHover"
-                  {...hoverLift}
+                  whileHover={{ scale: 1.02 }}
                 >
                   <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-accent-gold/20 to-transparent transition-all duration-700 ease-in-out group-hover:left-full z-0" />
                   

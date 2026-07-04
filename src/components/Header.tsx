@@ -19,7 +19,6 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
-    { id: 'certifications', label: 'Certs' },
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact' },
@@ -85,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavClick }) => {
             transition={{ duration: 0.3 }}
             onClick={() => handleNavigate('home')}
           >
-            IO
+            IO.
           </motion.div>
 
           <button

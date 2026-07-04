@@ -76,62 +76,78 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }
           </motion.div>
         </motion.div>
 
-        {/* Profile visualization with blueprint card */}
+        {/* Profile Image with Circular Frame and Badges */}
         <motion.div
-          className="relative h-100 md:h-125 flex items-center justify-center lg:justify-end perspective-[1000px]"
+          className="relative h-96 md:h-125 flex items-center justify-center lg:justify-end"
           variants={fadeInRight}
         >
           <motion.div
-            className="relative w-full max-w-95 aspect-4/5 bg-linear-to-br from-blue-600/10 to-slate-900/60 border border-accent-gold/25 rounded-xl p-8 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col justify-end gap-3"
-            initial={{ opacity: 0, scale: 0.9 }}
+            className="relative w-64 h-96 md:w-72 md:h-[28rem] flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <div className="absolute inset-0 blueprint-grid pointer-events-none" />
+            {/* Circular Border */}
+            <div className="absolute inset-0 rounded-full border-4 border-accent-gold/30 shadow-[0_0_60px_rgba(251,191,36,0.2)]" />
             
-            {/* Blueprint Corners */}
-            <div className="absolute top-3 left-3 w-6 h-6 border-2 border-accent-gold border-r-0 border-b-0 opacity-60" />
-            <div className="absolute bottom-3 right-3 w-6 h-6 border-2 border-accent-gold border-l-0 border-t-0 opacity-60" />
+            {/* Dashed Circular Border */}
+            <div className="absolute inset-3 rounded-full border-2 border-dashed border-accent-gold/40" />
 
-            <div className="relative z-10 h-full flex flex-col justify-end gap-3">
-              <motion.div
-                className="inline-flex items-center gap-2 font-mono text-xs tracking-[1.5px] text-green-400 mb-auto"
-                animate={{ opacity: [1, 0.4, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]" />
-                ACTIVE — THE ARK LEGACY
-              </motion.div>
-
-              <div className="font-mono text-xs text-white/35 tracking-widest">
-                IO / QA-QC / {new Date().getFullYear()}
-              </div>
-
-              <div className="font-bold text-3xl md:text-[1.8rem] text-white">
-                Building Engineer
-              </div>
-              
-              <div className="text-sm text-accent-gold font-semibold">
-                QA/QC Manager · BIM Specialist
-              </div>
-
-              <div className="w-full h-px bg-accent-gold/20 my-2" />
-
-              <div className="flex flex-col gap-2">
-                <div className="flex justify-between font-mono text-xs text-white/50 tracking-wide">
-                  <span>LOCATION</span>
-                  <span className="text-white/85 font-semibold">Lagos, Nigeria</span>
-                </div>
-                <div className="flex justify-between font-mono text-xs text-white/50 tracking-wide">
-                  <span>CAPACITY</span>
-                  <span className="text-white/85 font-semibold">100,000</span>
-                </div>
-                <div className="flex justify-between font-mono text-xs text-white/50 tracking-wide">
-                  <span>STATUS</span>
-                  <span className="text-accent-gold font-semibold">In Progress</span>
-                </div>
-              </div>
+            {/* Profile Image Circle */}
+            <div className="relative w-64 h-96 md:w-72 md:h-[28rem] rounded-full overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border-4 border-accent-gold/20">
+              <img 
+                src="/isaac-profile.png" 
+                alt="Isaac Ogabi" 
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary-blue/40 to-transparent" />
             </div>
+
+            {/* Top Right Badge - QA/QC Expert Manager */}
+            <motion.div
+              className="absolute top-0 right-0 md:top-6 md:right-6 bg-secondary-blue/80 border border-accent-gold/30 rounded-lg px-3 py-2 backdrop-blur-md shadow-lg"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-accent-gold" />
+                <div className="text-xs font-semibold text-white">
+                  <div>QA/QC</div>
+                  <div className="text-accent-gold text-[10px]">Expert Manager</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Left Badge - Experience */}
+            <motion.div
+              className="absolute left-0 bottom-32 md:left-0 md:bottom-40 bg-secondary-blue/80 border border-accent-gold/30 rounded-lg px-3 py-2 backdrop-blur-md shadow-lg"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full border border-white/50 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-white" />
+                </div>
+                <div className="text-xs font-semibold text-white">
+                  <div className="text-[10px] text-white/70">EXPERIENCE</div>
+                  <div className="text-accent-gold">5+ Yrs Exp</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Top Badge - Portfolio */}
+            <motion.div
+              className="absolute -top-6 left-1/2 -translate-x-1/2 bg-transparent border border-accent-gold/40 rounded-full px-4 py-2 backdrop-blur-md"
+              initial={{ opacity: 0, y: -15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="text-xs font-bold text-accent-gold tracking-wider whitespace-nowrap">
+                PORTFOLIO • ENGINEERING EXCELLENCE
+              </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       </motion.div>

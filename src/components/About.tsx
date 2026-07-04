@@ -77,10 +77,9 @@ export const About: React.FC = () => {
                   
                   <motion.div
                     className="text-5xl md:text-6xl font-extrabold bg-linear-to-br from-accent-gold to-yellow-300 bg-clip-text text-transparent mb-2 drop-shadow-lg relative z-10"
-                    variants={countUpAnimation}
-                    custom={0.2 + index * 0.1}
-                    initial="hidden"
-                    animate={inView ? 'visible' : 'hidden'}
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                    transition={{ delay: 0.2 + index * 0.1, duration: 0.6, ease: 'easeOut' }}
                   >
                     {inView && (
                       <CountUp

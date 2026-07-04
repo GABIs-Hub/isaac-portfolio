@@ -26,12 +26,6 @@ function App() {
 
       <Header onNavClick={scrollToSection} />
       <Hero onScrollToContact={() => scrollToSection('contact')} onScrollToAbout={() => scrollToSection('about')} />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Contact />
-      <Footer />
     </div>
   )
 }

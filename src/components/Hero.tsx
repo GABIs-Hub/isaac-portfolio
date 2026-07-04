@@ -176,17 +176,17 @@ const Hero: React.FC<HeroProps> = ({ onScrollToContact, onScrollToAbout }) => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
-          <motion.div className="flex flex-col" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0, duration: 0.6 }}>
+          <motion.div className="flex flex-col" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0, duration: 0.6, ease: 'easeOut' }}>
             <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">5+</span>
             <span className="text-[0.65rem] md:text-xs text-white/60 uppercase tracking-widest mt-1">Years Experience</span>
           </motion.div>
           <motion.div className="w-px h-8 bg-accent-gold/20" />
-          <motion.div className="flex flex-col" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6 }}>
+          <motion.div className="flex flex-col" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.6, ease: 'easeOut' }}>
             <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">100K</span>
             <span className="text-[0.65rem] md:text-xs text-white/60 uppercase tracking-widest mt-1">Capacity Project</span>
           </motion.div>
           <motion.div className="w-px h-8 bg-accent-gold/20" />
-          <motion.div className="flex flex-col" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }}>
+          <motion.div className="flex flex-col" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}>
             <span className="font-mono text-2xl md:text-[1.6rem] font-extrabold text-accent-gold leading-tight">6</span>
             <span className="text-[0.65rem] md:text-xs text-white/60 uppercase tracking-widest mt-1">Certifications</span>
           </motion.div>
